@@ -1,4 +1,5 @@
 import { css, keyframes } from "./css";
+import { styled } from "./styled";
 
 const bounceAnimationName = keyframes({
   "from, 20%, 53%, 80%, to": {
@@ -15,6 +16,20 @@ const bounceAnimationName = keyframes({
   }
 });
 
+const growAnimationName = keyframes({
+  from: { transform: "scale(1)" },
+  to: { transform: "scale(2) " }
+});
+
+const Link = styled("a")({
+  backgroundColor: "orange",
+  color: "white",
+  fontWeight: 600,
+  fontSize: 16,
+  padding: "8px 16px",
+  margin: "20px"
+});
+
 export default function App() {
   return (
     <div
@@ -27,6 +42,17 @@ export default function App() {
       })}
     >
       <h1>Styler</h1>
+      <img
+        src="/sx.png"
+        alt="logo"
+        className={css({
+          height: "150px",
+          width: "150px",
+          "&:hover": {
+            animation: `${growAnimationName} 500ms ease-in-out`
+          }
+        })}
+      />
       <div className={css({ margin: "10px" })}></div>
       <div
         className={css({
@@ -39,6 +65,8 @@ export default function App() {
       >
         Bounce on hover
       </div>
+      <a href="https://github.com/vtechguys/styler">Github</a>
+      <Link href="https://aniketjha.dev">Blog</Link>
     </div>
   );
 }
